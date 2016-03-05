@@ -1,0 +1,44 @@
+//
+//  ViewController.swift
+//  Swift-Weather
+//
+//  Created by Steve Madsen on 2/16/16.
+//  Copyright © 2016 Northwoods. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var feelsLikeLabel: UILabel!
+    @IBOutlet var weatherLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        getWeather()
+    }
+
+    func getWeather() {
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let url = NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=40.1024362&lon=-83.1483597&FcstType=json")
+        let task = session.dataTaskWithURL(url!) { (data, response, error) in
+            if error == nil {
+                let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                self.updateCurrentConditions(json as! [String: AnyObject])
+            }
+        }
+        task.resume()
+    }
+
+    func updateCurrentConditions(json: [String: AnyObject]) {
+        guard let currentObservation = json["currentobservation"] as? [String: String] else { return }
+
+        temperatureLabel.text = "\(currentObservation["Temp"]!)º"
+        feelsLikeLabel.text = "Feels like \(currentObservation["WindChill"]!)º"
+        weatherLabel.text = currentObservation["Weather"]
+    }
+
+}
+

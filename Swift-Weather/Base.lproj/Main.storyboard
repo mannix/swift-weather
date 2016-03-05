@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Swift_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="74º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQl-S9-hae">
+                                <rect key="frame" x="243" y="257" width="114" height="86"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="72"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels like 74º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5H-4Q-0K3">
+                                <rect key="frame" x="254" y="351" width="91.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7za-4e-m32">
+                                <rect key="frame" x="276" y="228" width="48" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v5H-4Q-0K3" firstAttribute="top" secondItem="PQl-S9-hae" secondAttribute="bottom" constant="8" id="8IP-Uu-zlv"/>
+                            <constraint firstItem="v5H-4Q-0K3" firstAttribute="centerX" secondItem="PQl-S9-hae" secondAttribute="centerX" id="SPo-dg-NS1"/>
+                            <constraint firstItem="PQl-S9-hae" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YT9-pA-yqj"/>
+                            <constraint firstItem="PQl-S9-hae" firstAttribute="top" secondItem="7za-4e-m32" secondAttribute="bottom" constant="8.5" id="vf1-4L-uUw"/>
+                            <constraint firstItem="7za-4e-m32" firstAttribute="centerX" secondItem="PQl-S9-hae" secondAttribute="centerX" id="wJS-Ne-sAn"/>
+                            <constraint firstItem="PQl-S9-hae" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="z1y-TU-qU8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="feelsLikeLabel" destination="v5H-4Q-0K3" id="feD-cj-iRK"/>
+                        <outlet property="temperatureLabel" destination="PQl-S9-hae" id="o5l-e6-I1g"/>
+                        <outlet property="weatherLabel" destination="7za-4e-m32" id="5AP-cc-oR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
