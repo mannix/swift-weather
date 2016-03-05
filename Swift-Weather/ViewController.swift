@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var feelsLikeLabel: UILabel!
     @IBOutlet var weatherLabel: UILabel!
+    @IBOutlet weak var loadingLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,15 @@ class ViewController: UIViewController {
 
     func updateCurrentConditions(json: [String: AnyObject]) {
         guard let currentObservation = json["currentobservation"] as? [String: String] else { return }
-
+        
         temperatureLabel.text = "\(currentObservation["Temp"]!)º"
         feelsLikeLabel.text = "Feels like \(currentObservation["WindChill"]!)º"
         weatherLabel.text = currentObservation["Weather"]
+
+        loadingLabel.hidden = true
+        temperatureLabel.hidden = false
+        feelsLikeLabel.hidden = false
+        weatherLabel.hidden = false
     }
 
 }
