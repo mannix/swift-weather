@@ -18,6 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking the weather..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvx-iC-j6M">
+                                <rect key="frame" x="210" y="290" width="180.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7za-4e-m32">
+                                <rect key="frame" x="40" y="228" width="520" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="Kew-bY-beO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="74º" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQl-S9-hae">
                                 <rect key="frame" x="40" y="257" width="520" height="86"/>
                                 <constraints>
@@ -33,21 +48,13 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7za-4e-m32">
-                                <rect key="frame" x="40" y="228" width="520" height="20.5"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5t-4J-apA">
+                                <rect key="frame" x="236" y="92" width="128" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="Kew-bY-beO"/>
+                                    <constraint firstAttribute="width" constant="128" id="DRi-Qu-fnE"/>
+                                    <constraint firstAttribute="height" constant="128" id="Zyx-pE-AqI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking the weather..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvx-iC-j6M">
-                                <rect key="frame" x="210" y="290" width="180.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -62,11 +69,14 @@
                             <constraint firstItem="PQl-S9-hae" firstAttribute="top" secondItem="7za-4e-m32" secondAttribute="bottom" constant="8.5" id="lcr-g1-WXU"/>
                             <constraint firstItem="7za-4e-m32" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="rUj-1P-60F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="v5H-4Q-0K3" secondAttribute="trailing" constant="20" id="t0W-3V-lk6"/>
+                            <constraint firstItem="m5t-4J-apA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="thf-Er-h67"/>
+                            <constraint firstItem="7za-4e-m32" firstAttribute="top" secondItem="m5t-4J-apA" secondAttribute="bottom" constant="8" id="xxc-QQ-qC6"/>
                             <constraint firstItem="zvx-iC-j6M" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yJu-AU-XMd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="feelsLikeLabel" destination="v5H-4Q-0K3" id="feD-cj-iRK"/>
+                        <outlet property="forecastImage" destination="m5t-4J-apA" id="Ofj-Iy-nMY"/>
                         <outlet property="loadingLabel" destination="zvx-iC-j6M" id="vIa-Tv-Ial"/>
                         <outlet property="temperatureLabel" destination="PQl-S9-hae" id="o5l-e6-I1g"/>
                         <outlet property="weatherLabel" destination="7za-4e-m32" id="5AP-cc-oR9"/>
