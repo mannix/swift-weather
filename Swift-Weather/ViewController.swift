@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var feelsLikeLabel: UILabel!
     @IBOutlet var weatherLabel: UILabel!
-    @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var forecastImage: UIImageView!
 
     override func viewDidLoad() {
@@ -43,11 +42,6 @@ class ViewController: UIViewController {
         temperatureLabel.text = "\(currentObservation["Temp"]!)º"
         feelsLikeLabel.text = "Feels like \(currentObservation["WindChill"]!)º"
         weatherLabel.text = currentObservation["Weather"]
-
-        loadingLabel.hidden = true
-        temperatureLabel.hidden = false
-        feelsLikeLabel.hidden = false
-        weatherLabel.hidden = false
     }
 
     func setWeatherImage(currentObservation: [String: String]) {
