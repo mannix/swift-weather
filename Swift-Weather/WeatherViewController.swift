@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WeatherViewController.swift
 //  Swift-Weather
 //
 //  Created by Steve Madsen on 2/16/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
 
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var feelsLikeLabel: UILabel!

@@ -41,7 +41,7 @@ class FetchWeatherController: UIViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ViewController {
+        if let vc = segue.destinationViewController as? WeatherViewController {
             vc.data = self.data
         }
     }
