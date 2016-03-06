@@ -10,28 +10,41 @@ import UIKit
 
 class FetchWeatherController: UIViewController {
 
+    var data: AnyObject?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         getWeather()
     }
 
     func getWeather() {
-        
-        performSegueWithIdentifier("weatherDetailSegue", sender: self)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let url = NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=40.1024362&lon=-83.1483597&FcstType=json")
+        session.dataTaskWithURL(url!) { (data, response, error) in
+            if error == nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                    self.data = json
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    self.performSegueWithIdentifier("weatherDetailSegue", sender: self)
+                })
+            }
+        }.resume()
     }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destinationViewController as? ViewController {
+            vc.data = self.data
+        }
     }
-    */
+
 
 }

@@ -15,23 +15,14 @@ class ViewController: UIViewController {
     @IBOutlet var weatherLabel: UILabel!
     @IBOutlet weak var forecastImage: UIImageView!
 
+    var data: AnyObject?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getWeather()
-    }
-
-    func getWeather() {
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let url = NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=40.1024362&lon=-83.1483597&FcstType=json")
-        session.dataTaskWithURL(url!) { (data, response, error) in
-            if error == nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                    self.updateCurrentConditions(json as! [String: AnyObject])
-                })
-            }
-        }.resume()
+        if let weatherData = data as? [String: AnyObject] {
+            updateCurrentConditions(weatherData)
+        }
     }
 
     func updateCurrentConditions(json: [String: AnyObject]) {
