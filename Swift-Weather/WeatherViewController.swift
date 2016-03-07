@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITableViewDataSource {
+class WeatherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var feelsLikeLabel: UILabel!
@@ -23,7 +23,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         forecastTableView.dataSource = self
-
+        forecastTableView.delegate = self
         if let weatherData = inputData as? [String: AnyObject] {
             self.weatherData = weatherData
             updateCurrentConditions()
@@ -70,10 +70,19 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
             let summaries = weatherData["data"]!["text"] as! [String]
             forecastCell.summaryLabel.text = summaries[indexPath.row]
 
+            forecastCell.layoutIfNeeded()
             return forecastCell
         }
         return UITableViewCell()
     }
-    
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
 }
 
