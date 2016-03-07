@@ -16,16 +16,15 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var forecastImage: UIImageView!
     @IBOutlet weak var forecastTableView: UITableView!
 
-    var data: AnyObject?
+    var inputData: AnyObject?
     var weatherData = Dictionary<String, AnyObject>()
-    var forecastData = Dictionary<String, AnyObject>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         forecastTableView.dataSource = self
 
-        if let weatherData = data as? [String: AnyObject] {
+        if let weatherData = inputData as? [String: AnyObject] {
             self.weatherData = weatherData
             updateCurrentConditions()
         }
@@ -37,11 +36,6 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
         temperatureLabel.text = "\(currentObservation["Temp"]!)º"
         feelsLikeLabel.text = "Feels like \(currentObservation["WindChill"]!)º"
         weatherLabel.text = currentObservation["Weather"]
-
-        if let data = weatherData["data"] as? [String: AnyObject] {
-            forecastData = data
-        }
-
     }
 
     func setWeatherImage(currentObservation: [String: String]) {
@@ -62,7 +56,7 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
     // MARK: Table View Data Source
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastData.count
+        return weatherData["data"]!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -70,10 +64,10 @@ class WeatherViewController: UIViewController, UITableViewDataSource {
             let periodNames = weatherData["time"]!["startPeriodName"] as! [String]
             forecastCell.periodLabel.text = periodNames[indexPath.row]
 
-            let temperatures = forecastData["temperature"] as! [String]
+            let temperatures = weatherData["data"]!["temperature"] as! [String]
             forecastCell.temperatureLabel.text = "\(temperatures[indexPath.row])º"
 
-            let summaries = forecastData["text"] as! [String]
+            let summaries = weatherData["data"]!["text"] as! [String]
             forecastCell.summaryLabel.text = summaries[indexPath.row]
 
             return forecastCell
